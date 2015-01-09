@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	[:MetaData]
+	[:Head]
+	<title>[Website.Name]| [_All Tags] </title>
+</head>
+<body>
+	[:Header]
+ 	[:HeaderTopNavigationLinksBlock]
+
+	<div class="container" style="padding-top:30px;">
+		<div class="row">
+			<div class="col-sm-9">
+				<div class="tag-content">
+					<div class="block-title">
+						<h4>ALL TAGS</h4>
+					</div>
+					<div class="tag-list" style="padding-top:30px;">
+						<ul class="list-inline">
+						[Website.Tags,9=
+							<li style="padding:0 5px 0 5px;" ><a class="[TagCount.PopularityIndication]" href="[TagCount.Url]">[TagCount.TagCountName]</a></li>
+						]
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				[:SideCartBlock]
+				[:SideRecentlyAddedBlock]
+				[:SideCompareBlock]
+				[:SideNewsletterBlock]
+				[:SideTagsBlock]
+			</div>
+		</div>
+	</div>
+	[:Footer]
+</body>
+</html>

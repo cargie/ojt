@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	[:MetaData]
+	[:Head]
+	<title>[Website.Name] | [_]</title>
+</head>
+<body>
+	[:Header]
+	[:HeaderTopNavigationLinksBlock]
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				[:SideAccountBlock]
+			</div>
+			<div class="col-sm-9">
+				<div class="page-title" style="margin-top:30px;">
+					<h1>[_NEWSLETTER SUBSCRIPTION]</h1>
+					<hr>
+				</div>
+				<div class="newsletter-continent">
+					<div class="block-title">
+						<h5>
+							<strong>[_NEWSLETTER SUBSCRIPTION]</strong>
+						</h5>
+						<form action="">
+							<ul class="form-list">
+						    <li class="control"><input type="checkbox" class="checkbox in-block" title="[_General Subscription]" value="1" id="newsletter-subscription" name="is_subscribed" [?Customer.NewsletterStatus|Subscribed=checked]><label for="newsletter-subscription" class="in-block">[_General Subscription]</label><input type="hidden" name="email" value="[Website.CurrentCustomer=[Customer.Email]]"></li>
+							</ul>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	[:Footer]
+</body>
+</html>

@@ -1,0 +1,13 @@
+[Website.RecentlyViewed,1,4,'Name',Ascending]
+[?Filter.Empty|no=
+<div class="recently-viewed-products-block">
+	<p class="recently-title">
+		<strong>[_RECENTLY VIEWED PRODUCTS]</strong>
+	</p>
+	<ul class="list-unstyled">
+		[Filter.Products=
+			<li><a href="[Website.GetUrl,Product,[Product.Id]]">[Product.Name]</a></li>
+		]
+	</ul>		
+</div>			
+]

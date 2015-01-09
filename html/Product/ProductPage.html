@@ -1,0 +1,213 @@
+/*
+*	Renders a product page of the current product.
+*
+*/
+
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	[:MetaData]
+	[:Head]
+	<script type="text/javascript" src="[File:/js/cloud-zoom.js]"></script>
+  <link rel="stylesheet" href="[File:/css/cloud-zoom.css]" type="text/css">
+	<script src="[File:/js/parsley.js]"></script>
+	<title>[Product.Name]</title>
+	<style>
+	  .lensWidth{
+	  	width: 72px;
+	  }
+		.lensHeight{height: 72px;}
+	</style>
+	<script>
+	$(document).ready(function(){
+		$('.carousel-upsell').slick({
+		lazyLoad: 'ondemand',
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  autoplay: true,
+	  autoplaySpeed: 2000,
+	});
+					
+	});
+	</script>
+</head>
+<body>
+[:Header]
+[:HeaderTopNavigationLinksBlock]
+<div class="container">
+<br />
+<br />
+<ol class="my breadcrumb">
+	<li><a href="/sample6/test/test6">
+		Home
+	</a></li>
+	<li class="active">[Product.Name]</li>
+</ol>
+	<div class="row">
+		<div class="col-sm-9 col-xs-12">
+			<div class="row">
+				<div class="col-sm-5 col-md-5">
+					<div class="product-image">
+						<a href="/[Product.ThumbnailImage=[ProductImage.ImageUrl]]" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'336', zoomHeight:'336', adjustY:10, adjustX:0">
+              <img src="/[Product.ThumbnailImage=[ProductImage.ImageUrl,250,300]]" class="img-responsive" title="[Product.Name]" >
+            </a>
+
+						<!-- Identify elements as gallery elements using the 'cloudzoom-gallery' class. -->
+						<!-- Use the 'useZoom' option to associate the element to specific Cloud Zoom instance. -->
+						
+					</div>
+
+				</div>
+				<div class="col-sm-7">
+					<div class="product-name">
+						<h1>[Product.Name]</h1>
+					</div>
+					<p class="strong">Availability: <span> 
+					[?Product.InStock|Yes=<span class="text-success"><strong>In Stock</strong></span>|No=<span><strong>Out of Stock</strong></span>]
+					</span></p>
+					<p class="product-quantity">
+						<span>
+							Only 
+							<strong>[Product.NumberInStock]</strong>
+							 Left
+						</span>
+					</p>
+					<div class="price-box">
+						[?Product.Sale
+							|Sale=<span class="old-price"><del>[Product.Price]</del>
+							</span>
+							<span> [Product.SpecialPrice]</span>
+							|=<span class="normal-price">[Product.Price]</span>
+						]
+					</div>
+					<div class="short-description">
+						<p>
+							[Product.ShortDescription]
+						</p>
+					</div>
+					[?Product.HasOptions
+						|Yes=
+						<div class="product-option">
+							[:ProductOption]
+						</div>
+					]
+				</div>
+			</div>
+			<div class="description">
+				<div class="description-title">
+					<h2>[_Details]</h2>
+					<p>
+						[Product.Description]
+					</p>
+					
+				</div>
+			</div>
+			<br>
+			<div class="add-tags">
+				<div class="product-tags">
+					<h2>[_Product Tags]</h2>
+						[?Product.HasTags
+							|Yes=<h3 class="tagd">[_Other people marked this product with these tags:]</h3>
+							<ul class="list-inline tags">
+								[Product.TagsSortedAndUnique= <li> <a href="[Website.GetUrl,Tag,[Tag.Name]]">[Tag.Name]  </a> ([Tag.ProductCountWithTagName]) </li>]
+							</ul>
+						]
+				</div>
+				<br>
+				<form action="">
+					<label class="form-label"for="">[_Add Your Tags:]</label>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
+						<input class="form-control" type="text">
+					</div>
+					<button class="btn">[_ADD TAGS]</button>
+				</form>
+			</div>
+			<p class="tag-notice">
+				Use spaces to separate tags. Use single quotes (') for phrases.
+			</p>
+		[?Product.HasUpSellProducts
+		|yes=
+			<div class="upsell-block">
+			<h2>[_YOU MAY ALSO BE INTERESTED IN THE FOLLOWING PRODUCT(S)]</h2>
+				<div class="carousel-upsell row">
+
+					[Product.UpSells=
+						<div class="col-sm-4">
+							<div class="product-box">
+								<a href="[Website.GetUrl,Product,[Product.Id]]">
+									<img src="/[Product.ThumbnailImage=[ProductImage.ImageUrl,205,220]]" class="img-responsive" alt="">
+								</a>
+								<div class="upsell-caption">
+									<h3 class="text-center"><a href="[Website.GetUrl,Product,[Product.Id]]">[Product.Name]</a></h3>
+									<div class="price">
+										<p class="text-center">[Product.Price]</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					]
+				</div>
+			</div>
+
+		]
+		</div>
+		
+		
+		<div class="col-sm-3 col-xs-12">
+		
+		[?Product.HasRelatedProducts|Yes=
+			<div class="related-products">
+			<div class="rel-title">
+				<strong>[_RELATED PRODUCTS]</strong>
+			</div>
+				[Product.RelatedProducts,3=
+				<p>
+						<div class="row">
+							<div class="col-sm-5">
+								<a href="[Website.GetUrl,Product,[Product.Id]]">
+									<img src="/[Product.ThumbnailImage=[ProductImage.ImageUrl,100,100]]" alt="[Product.Name]" class="img-responsive">
+								</a>
+							</div>
+							<div class="col-sm-7">
+								<p class="product-name">
+									<a href="[Website.GetUrl,Product,[Product.Id]]">[Product.Name]</a>
+								</p>
+								<p class="rel-price">
+									[Product.Price]
+								</p>
+								<p>
+									<a href="#">Add to WishList</a>
+								</p>
+								<p>
+									<a href="#">Add to Cart</a>
+								</p>
+								
+
+							</div>
+						</div>
+				</p>
+				]
+			</div>
+		]
+				[:SideCartBlock]
+				[:SideRecentlyAddedBlock]
+				[:SideCompareBlock]
+				[:SideRecentlyViewedBlock]
+				[:SideNewsletterBlock]
+				[:SideTagsBlock]
+		</div>
+		
+	</div>
+</div>
+
+[:Footer]
+
+
+</body>
+
+
+
+
+</html>
+

@@ -1,0 +1,26 @@
+<div class="product-cart">
+	<p class="cart-title">
+		<strong>
+			[_MY CART]
+		</strong>
+	</p>
+	[?ShoppingCart.Empty|CartEmpty=
+		<p class="cart-empty">
+			You have no items in your shopping cart.
+		</p>
+	|=<p class="item-count">
+		[_There is ]
+		<a href="[Website.GetUrl,Cart,[ShoppingCart.Id]]">
+			[ShoppingCart.NrItems] [_item] 
+		</a>
+		[ _in your cart.]
+	</p>
+	<p class="subtotal">
+		<span class="label">[_Cart Subtotal:]</span>
+		<span class="price">[ShoppingCart.SubTotal]</span>
+	</p>
+	<p class="btn-action">
+		<a class="btn checkout-link" href="[Website.GetUrl,CheckOut,OnePage]">[_CHECKOUT]</a>
+	</p>
+	]
+</div>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	[:MetaData]
+	[:Head]
+	<title>[Website.Name]| [_Compare Products]</title>
+</head>
+<body>
+	[:Header]
+	[:HeaderTopNavigationLinksBlock]
+	<br>
+	<div class="container">
+		<div class="compare-title">
+			<h4>[_COMPARE PRODUCTS]</h4>
+		</div>
+		[?Comparer.HasItems|Yes=
+		<div class="compare-content table-responsive">
+			<table class="table table-bordered ">
+				<thead>
+					<tr>
+						<th>&nbsp;</th>
+						[Comparer.Items=
+						<th>
+							<p class="text-center">
+								<a href="javascript:setLocationAjax('[Website.GetUrl,Magento,RemoveFromCompare]','[Url.FullUrl]',false,'[ComparerItem.Id]');" class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="right" title="Remove This Item">
+								</a>
+							</p>
+						</th>
+						]
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>&nbsp;</td>
+						[Comparer.Items=
+						<td>
+							<div class="product-image">
+								<a href="[Website.GetUrl,Product,[Product.Id]]">
+									<img src="/[Product.ThumbnailImage=[ProductImage.ImageUrl,140,150]]" class="img-responsive" alt="">
+								</a>
+							</div>
+							<br>
+							<br>
+							<div class="product-details">
+								<p class="text-center product-name">
+									<a href="[Website.GetUrl,Product,[Product.Id]]">[Product.Name]</a>
+								</p>
+								<p class="text-center product-price">
+									[Product.Price]
+								</p>
+								<p class="text-center ">
+									<a href="javascript:" class="btn btn-default btn-lg btn-add-cart">[_ADD TO CART]</a>
+								</p>
+								<p class="text-center">
+									<a href="" class="add-to-wishlist">[_ADD TO WISHLIST]</a>
+								</p>
+							</div>
+						</td>
+						]
+					</tr>
+					<tr>
+						<td>[_Description]</td>
+						[Comparer.Items=
+						<td>
+							<p class="text-center">
+								[Product.Description]
+							</p>
+						</td>
+
+						]
+					</tr>
+					<tr>
+						<td>[_Short Description]</td>
+						[Comparer.Items=
+						<td>
+							<p class="text-center">
+								[Product.ShortDescription]
+							</p>
+						</td>
+
+						]
+					</tr>
+					<tr>
+						<td>[_SKU]</td>
+						[Comparer.Items=
+						<td>
+							<p class="text-center">
+								[Product.Sku]
+							</p>
+						</td>
+
+						]
+					</tr>
+					<tr>
+						<td>[_Manufacturer]</td>
+						[Comparer.Items=
+						<td>
+							<p class="text-center">
+								[Product.Sku]
+							</p>
+						</td>
+						]
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						[Comparer.Items=
+						<td>
+							<br>
+							<p class="text-center">
+								[Product.Price]
+							</p>
+							<br>
+							<p class="text-center">
+								<a class="btn btn-add-cart" href="[Website.GetUrl,Product,[Product.Id]]">
+									[_ADD TO CART]
+								</a>
+							</p>
+							<br>
+							<p class="text-center">
+								<a class="add-to-wishlist" href="">[_ADD TO WISHLIST]</a>
+							</p>
+						</td>
+						]
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+		]
+	</div>
+	[:Footer]
+</body>
+</html>

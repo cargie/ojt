@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	[:MetaData]
+	[:Head]
+	<title>[Website.Name] | [_Wish List]</title>
+</head>
+<body>
+	[:Header]
+	[:HeaderTopNavigationLinksBlock]
+	<div class="container">
+		<div class="col-sm-3">
+			[:SideAccountBlock]
+		</div>
+		<div class="col-sm-9">
+			<div class="page-title" style="padding-top:30px;">
+				<h2>
+					[_Account control panel]
+				</h2>
+			</div>
+			<hr>
+			<div class="page-greetings">
+				<h4><strong>[_Hello] [Customer.FullName]</strong></h4>
+				<p>
+					<small>
+						[_From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.]
+					</small>
+				</p>
+			</div>
+			<div class="page-content">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="contact-info-block">
+							<div class="content-title">
+								<h2>[_Contact information]</h2>
+							</div>
+							<div class="content">
+								<p>[Customer.FullName]</p>
+						    <p>[Customer.Email]</p>
+						    <a href="[Website.GetUrl,Customer,AccountEdit/ChangePassword/[Customer.Id]]" class="gold-link">[_Change password]</a>
+						    <a href="[Website.GetUrl,Customer,AccountEdit]" class="pull-right gold-link">Edit</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="customer-newsletter-block">
+							<div class="content-title">
+								<h2>
+									[_Newsletter]
+								</h2>
+							</div>
+							<div class="content">
+								<p>[_You are currently subscribed to the following newsletters:]</p>
+						    <a href="[Website.GetUrl,Customer,Newsletter]" class="pull-right gold-link">Edit</a>
+						    <br>
+							</div>
+						</div>
+					</div>
+				</div>
+				<a href="[Website.GetUrl,Customer,Address]" class="pull-right gold-link">[_Address management]</a>
+				<div class="page-title">
+					<h2>
+						<strong>[_Address book]</strong>
+					</h2>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="default-billing-block">
+							<div class="content-title">
+								<h2>
+									[_Default Billing Address]
+								</h2>
+							</div>
+							<div class="content">
+								[Customer.DefaultInvoiceAddress=<address>
+									[Address.FirstName] [Address.LastName]<br>
+									[Address.StreetName]<br>
+									[Address.City],  [Address.PostalCode]<br>
+									[Address.State] [Address.Country=[Country.Name]]<br>
+									T: [Address.TelNumber]
+								</address>
+								<p><a href="[Website.GetUrl,Customer,AddressEdit/[Address.Id]]" class="pull-right gold-link">[_Edit]</a></p>
+								]
+								<br>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div class="default-delivery-block">
+							<div class="content-title">
+								<h2>
+									[_Default delivery address]
+								</h2>
+							</div>
+							<div class="content">
+								[Customer.DefaultShippingAddress=<address>
+									[Address.FirstName] [Address.LastName]<br>
+									[Address.StreetName]<br>
+									[Address.City],  [Address.PostalCode]<br>
+									[Address.State] [Address.Country=[Country.Name]]<br>
+									T: [Address.TelNumber]
+								</address>
+								<p><a href="[Website.GetUrl,Customer,AddressEdit/[Address.Id]]" class="pull-right gold-link">[_Edit]</a></p>
+								]
+								<br>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<br><br>
+	[:Footer]
+</body>
+</html>

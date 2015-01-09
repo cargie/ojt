@@ -1,0 +1,120 @@
+<br>
+<div class="filters-block">
+	<div class="filter-block">
+		<p>
+			<span class="filter-count pull-left">[Filter.Count] Item(s)</span>
+			<span class="pull-right limiter">
+				[_show] 
+				<select id="limiter" class="select-small" onchange="setLimit(this.value)">
+				[?Configuration.CatalogListMode
+				|ListOnly=
+						[?Configuration.CatalogListAllowAll|Yes=<option value="All">[_All]</option>]
+					[Configuration.CatalogListPerPageIterator=<option value="[Configuration.CatalogPerPageCurrentValue]">[Configuration.CatalogPerPageCurrentValue]</option>]
+				|GridOnly=
+					[?Configuration.CatalogGridAllowAll|Yes=<option value="All">[_All]</option>]
+					[Configuration.CatalogGridPerPageIterator=<option value="[Configuration.CatalogPerPageCurrentValue]">[Configuration.CatalogPerPageCurrentValue]</option>]
+				|ListDefault=
+					[?Configuration.CatalogListAllowAll|Yes=<option value="All">[_All]</option>]
+					[Configuration.CatalogListPerPageIterator=<option value="[Configuration.CatalogPerPageCurrentValue]">[Configuration.CatalogPerPageCurrentValue]</option>]
+				|GridDefault=
+					[?Configuration.CatalogGridAllowAll|Yes=<option value="All">[_All]</option>]
+					[Configuration.CatalogGridPerPageIterator=<option value="[Configuration.CatalogPerPageCurrentValue]">[Configuration.CatalogPerPageCurrentValue]</option>]
+				]
+				
+			</select>
+			<script type="text/javascript">
+				jQuery("#limiter").val('[UserInput.PageNrOn]');
+			</script>
+			</span>
+		</p>
+	</div>
+	<br>
+	<hr>
+	<p class="filter-2-block">
+		<span class="pull-left">
+			
+			
+			[?Configuration.CatalogListMode
+			|ListOnly=
+				<span class="glyphicon glyphicon-list fs-25" style="color:gold;"></span>
+			|GridOnly=
+				<span class="glyphicon glyphicon-th-large fs-25" style="color:gold;"></span>
+			|ListDefault=
+				 [?UserInput.CatalogMode
+				 |Grid=
+					<a href=""><span class="glyphicon glyphicon-th-large fs-25" style="color:gold;"></span></a>
+			
+				 |List=
+				 	<span class="glyphicon glyphicon-list fs-25" style="color:gold;"></span>
+				 ]
+			|GridDefault=
+				 [?UserInput.CatalogMode
+				 |Grid=
+					<span class="glyphicon glyphicon-th-large fs-25" style="color:gold;">
+				 |List=
+				 	<a href=""><span class="glyphicon glyphicon-list fs-25" style="color:gold;"></span></a>
+				 ]
+			]
+		</span>
+		<span class="pull-right">
+			<span class="relevance">
+				<span>[_Sort By]</span>
+				<select id="sorter" class="select-small" onchange="selectaction('[Website.GetUrl,Ajax,Update]','[UserInput.DefaultUrlPart]','Page/[UserInput.PageFrom]/[UserInput.PageNrOn]/'+this.value+'/[UserInput.PageAscending]/[UserInput.FilterUrl]');" >
+					[Configuration.IterateAvailableSortBy=
+						<option value="[configuration.CurrentAvailableSortBy]">[configuration.CurrentAvailableSortBy]</option>
+					]
+				</select>
+			</span>
+			<span class="arrow-sort">
+				<span class="glyphicon glyphicon-arrow-down"></span>
+			</span>
+		</span>
+	</p>
+</div>
+<br>
+<br>
+<script type="text/javascript">
+
+var setSort=function(){
+	if ('[UserInput.PageAscending]'=='Ascending'){
+		$j(".asc-direction").css('display','block');
+		$j(".desc-direction").css('display','none');
+	}else{
+		
+		$j(".desc-direction").css('display','block');
+		$j(".asc-direction").css('display','none');
+	}
+
+};
+	
+var setLimit=function(tmpval){
+	
+	var total=[Filter.Count];
+	
+	// if (tmpval>=total){
+		selectaction('[Website.GetUrl,Ajax,Update]','[UserInput.DefaultUrlPart]','Page/1/'+tmpval+'/[UserInput.PageSort]/[UserInput.PageAscending]/[UserInput.FilterUrl]');
+	// }else{
+	// 	var res=Math.floor(total/tmpval);
+	// 	if ([UserInput.PageFrom]>res) var p_from=res; else var p_from=[UserInput.PageFrom];
+		
+	// 	selectaction('[Website.GetUrl,Ajax,Update]','[UserInput.DefaultUrlPart]','Page/'+p_from+'/'+tmpval+'/[UserInput.PageSort]/[UserInput.PageAscending]/[UserInput.FilterUrl]');
+	// }
+	// $j("#limiter option").each(function(i) {
+	// 	var optval=$j(this).val();
+	
+	// 	if (optval=='[UserInput.PageNrOn]'){
+	// 		$j(this).attr('selected','selected');
+	// 	}
+	// });
+};
+
+var paging =function(pagenr){
+	
+	selectaction('[Website.GetUrl,Ajax,Update]','[UserInput.DefaultUrlPart]','Page/'+pagenr+'/[UserInput.PageNrOn]/[UserInput.PageSort]/[UserInput.PageAscending]/[UserInput.FilterUrl]');
+	setSort();
+};
+
+setSort();
+
+</script>
+

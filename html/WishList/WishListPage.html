@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	[:MetaData]
+	[:Head]
+	<title>[Website.Name] | [_Wish List]</title>
+</head>
+<body>
+	[:Header]
+	[:HeaderTopNavigationLinksBlock]
+	<div class="container">
+		<div class="col-sm-3">
+			[:SideAccountBlock]
+		</div>
+		<div class="col-sm-9">
+			<div class="wishlist-block">
+				<div class="content-title">
+					<h2>[_My Wishlist]</h2>
+				</div>
+				[?WishList.Empty|WishListFilled=
+				<div class="content">
+					<div class="table-responsive">
+						<table class="table table-bordered wishlist-table">
+							<thead>
+								<tr>
+									<th>
+										<span>[_Product Image]</span>
+									</th>
+									<th><span>[_Product Details and Comment]</span></th>
+									<th>[_Add to Cart]</th>
+									<th>&nbsp;</th>
+								</tr>
+							</thead>
+							<tbody>
+							[WishList.Items=
+								<tr>
+									<td style="padding:20px;">
+										<a href="[Website.GetUrl,Product,[Product.Id]]">
+										<img src="/[Product.ThumbnailImage=[ProductImage.ImageUrl,205,220]]" alt="[Product.Name]" style="width:100%" class="">
+										</a>
+									</td>
+									<td>
+										<p class="product-name">
+											[WishListItem.ProductName]
+										</p>
+										<ul>[WishListItem.Attributes=<li>[WishListItemAttribute.Value]</li>]</ul>
+										<dl>[WishListItem.Options=
+											<dt> [ProductOption.Label]</dt> 
+											<dd>[WishListOption.ValueAsText]</dd>
+											]
+										</dl>
+										<p class="short-description">
+											[Product.ShortDescription]
+										</p>
+										<textarea name="description[1]" cols="30" rows="8">[?WishListItem.CommentEmpty|Set=[WishListItem.Description] |Empty=[_Please enter your comments...]]</textarea>
+									</td>
+									<td>
+										[:PriceBlock]
+									</td>
+									<td>
+										<a href="javascript:setLocationAjax('[Website.GetUrl,Magento,RemoveFromWishlist]','[Url.FullUrl]',false,'[WishListItem.Id]')" class="gold-link"style="margin:auto;"><i class="glyphicon glyphicon-remove"></i></a>
+									</td>
+								</tr>
+							]
+							</tbody>
+						</table>
+					</div>
+				</div>
+				|WishListEmpty=
+					<p>[_There are no items in the wishlist.]</p>
+					
+				]
+				<div class="pull-right">
+					<a href="#" class="btn btn-custom">[_SHARE THIS WISHLIST]</a>
+					<a href="#" class="btn btn-custom">[_CLEAR WISHLIST]</a>
+					<a href="#" class="btn btn-custom">[_ADD ALL TO CART]</a>
+					<a href="#" class="btn btn-custom">[_UPDATE WISHLIST]</a>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+	<br><br>
+	[:Footer]
+</body>
+</html>

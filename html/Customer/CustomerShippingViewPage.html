@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	[:MetaData]
+	[:Head]
+	<title>[Website.Name] | [_]</title>
+</head>
+<body>
+	[:Header]
+	[:HeaderTopNavigationLinksBlock]
+	<div class="container">
+		<div class="row">
+				<div class="col-sm-3">
+					[:SideAccountBlock]
+				</div>
+				<div class="col-sm-9">
+					<div class="page-title" style="margin-top:30px;">
+						<h1>
+							#[Shipping.ShippingNumber] - [Shipping.Status]
+						</h1>
+						<hr>
+					</div>
+					<div class="shipping-product-list">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>[_Product Name]</th>
+									<th>[_SKU]</th>
+									<th>[_Price]</th>
+									<th>[_QTY]</th>
+									<th>[_Subtotal]</th>
+								</tr>
+							</thead>
+							<tbody>
+								[Shipping.Item=
+								<tr>
+  		            <td>[ShippingItem.OrderItem=[OrderItem.Name]]<br></td>
+							    <td class="a-right">[ShippingItem.OrderItem=[OrderItem.Sku]]</td>
+							    <td class="a-center">[ShippingItem.OrderItem=[OrderItem.PriceEach]]</td>
+							    <td class="a-center">[ShippingItem.OrderItem=[OrderItem.Quantity]]</td>
+							    <td class="a-right">[ShippingItem.OrderItem=[OrderItem.Price]]</td>
+								</tr>
+								
+								]
+							</tbody>
+						</table>
+						<a href="[Website.GetUrl,Customer,ShippingList]" class="btn btn-custom">back</a>
+					</div>
+				</div>
+			</div>	
+	</div>
+	[:Footer]
+</body>
+</html>

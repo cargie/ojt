@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	[:MetaData]
+	[:Head]
+	<title>[Website.Name] | [_Order]</title>
+</head>
+<body>
+	[:Header]
+	[:HeaderTopNavigationLinksBlock]
+	<div class="container" >
+		<div class="row">
+			<div class="col-sm-3">
+				[:SideAccountBlock]
+			</div>
+			<div class="col-sm-9"  style="margin-top:20px;">
+			<div class="page-title">
+				<h2 class="text-gold">[_My Order(s)]</h2>
+			</div>
+			<br>
+				<div class="table-responsive">
+					<table class="table table-bordered my-table">
+						<thead>
+							<tr>
+								<th><span>[_Order]</span></th>
+								<th><span>[_Date]</span></th>
+								<th><span>[_Ship To]</span></th>
+								<th><span>[_Mutation]</span></th>
+								<th><span>[_Total]</span></th>
+								<th><span>[_Status]</span></th>
+								<th><span>&nbsp;</span></th>
+							</tr>
+						</thead>
+						<tbody>
+							[Customer.Orders=
+							<tr>
+								<td>[Order.OrderNumber]</td>
+								<td><span class="nobr">[Order.LastDate]</span></td>
+
+								<td>
+								[Order.LatestDeliveryAddress=
+									[OrderAddress.FirstName] [OrderAddress.MiddleName] [OrderAddress.LastName]<br>
+									[OrderAddress.Street]<br>
+									[OrderAddress.City],  [OrderAddress.PostalCode]<br>
+									[OrderAddress.State] [OrderAddress.Country]<br>
+									T: [OrderAddress.TelNumber]
+								]
+								</td>
+								<td>
+									<ul>[Order.Mutations=<li>[OrderMutation.Date], [OrderMutation.Status], [OrderMutation.Type] </li>]
+									<ul>
+								</td>
+								<td><span class="nobr">[Order.TotalPrice]</span></td>
+								<td><em>[Order.LastStatus]</em></td>
+								<td>
+									<span class="nobr"><a href="[Website.GetUrl,Customer,OrderView/[Order.Id]]">[_View Order]</a><!-- check if reorder is true --><br><a href="" class="link-reorder">[_Reorder]</a>
+									</span>
+								</td>
+							</tr>
+							]
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	[:Footer]
+</body>
+</html>

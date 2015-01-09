@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	[:MetaData]
+	[:Head]
+	<title>[Website.Name] | [_]</title>
+</head>
+<body>
+	[:Header]
+	[:HeaderTopNavigationLinksBlock]
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				[:SideAccountBlock]
+			</div>
+			<div class="col-sm-9">
+				<div class="page-title" style="margin-top:30px;">
+					<h1>
+						#[Invoice.InvoiceNumber] - [Invoice.Status]
+					</h1>
+					<hr>
+				</div>
+				<div class="invoice-product-list">
+					<table class="table table-bordered">
+				    <thead>
+							<tr>
+							    <th class="" >[_Product Name]</th>
+							    <th class="" width="15%">[_SKU]</th>
+							    <th class="" width="15%">[_Price]</th>
+							    <th class="" width="15%">[_Qty]</th>
+							    <th class="" width="20%">[_Subtotal]</th>
+							</tr>
+				    </thead>
+				    <tbody>	
+				    	[Invoice.Mutation=	
+							[OrderMutation.Items=
+							<tr>
+							    <td>[OrderItem.Name]<br></td>
+							    <td class="">[OrderItem.Sku]</td>
+							    <td class="">[OrderItem.PriceEach]</td>
+							    <td class="">[OrderItem.Quantity]</td>
+							    <td class="">[OrderItem.Price]</td>
+							</tr>
+							]
+						]
+							
+						<tr>
+						    <td colspan="4" class="a-right">[_Total]</td>
+						    <td class="a-right">[Invoice.TotalAmount]</td>
+						</tr>
+				    </tbody>
+				</table>
+				<a href="[Website.GetUrl,Customer,InvoiceList]" class="btn btn-custom">[_back]</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	[:Footer]
+</body>
+</html>

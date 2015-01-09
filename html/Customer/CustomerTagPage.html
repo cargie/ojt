@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	[:MetaData]
+	[:Head]
+	<title>[Website.Name] | [_Wish List]</title>
+</head>
+<body>
+	[:Header]
+	[:HeaderTopNavigationLinksBlock]
+	<div class="container">
+		<div class="col-sm-3">
+			[:SideAccountBlock]
+		</div>
+		<div class="col-sm-9">
+			<div class="page-title" style="margin-top:30px;">
+				<h1>MY TAGS</h1>
+			<hr>
+			</div>
+			<div class="tag-lists">
+				<ul class="list-inline">
+					[Customer.Tags=
+					<li class="in-block"><a href="[Website.GetUrl,Tag,[TagCount.TagCountName]]"><span class="[TagCount.PopularityIndication]">[TagCount.TagCountName]</span></a></li>
+					]
+				</ul>
+			</div>
+		</div>
+	</div>
+	<br><br>
+	[:Footer]
+</body>
+</html>

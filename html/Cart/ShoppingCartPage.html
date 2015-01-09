@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>[_Shopping Cart]</title>
+	[:MetaData]
+	[:head]
+</head>
+<body>
+[:Header]
+[:HeaderTopNavigationLinksBlock]
+<div class="container">
+	<div class="shopping-cart-page">
+
+		[?ShoppingCart.Empty
+		|CartEmpty=
+		<div class="page-title">
+			<h1>[_Shopping Cart is Empty]</h1>
+		</div>
+		<div class="cart-empty">
+			<p>[_You have no items in your shopping cart.]</p>
+			<p>[_Click]
+				<a href="[Website.GetUrl,home]"> here </a>
+					[_to continue shopping.]
+			</p>
+		</div>
+		|=
+		<div class="page-title">
+			<h1>[_SHOPPING CART]</h1>
+		</div>
+		<div class="shopping-cart-table table-responsive">
+			<table class="table table-bordered">
+			  <thead>
+			  	<tr>
+			  		<th>&nbsp;</th>
+			  		<th style="padding:10px;">[_Product Name]</th>
+			  		<th>&nbsp;</th>
+			  		<th style="padding:10px;"><span>
+			  			[_Unit Price]
+			  		</span></th>
+			  		<th style="padding:10px;"><span>
+			  			[_Qty]
+			  		</span></th>
+			  		<th style="padding:10px;"><span>
+			  			[_Subtotal]
+			  		</span></th>
+			  		<th>&nbsp;</th>
+			  	</tr>
+			  </thead>
+			  <tbody>
+			  	[ShoppingCart.Items= 
+			  	<tr>
+				  	<td>
+				  		<a href="[Website.GetUrl,Product,[Product.Id]]">
+				  			<img width="75" height="75" src="/[Product.ThumbnailImage=[ProductImage.ImageUrl,100,100]]" alt="[Product.Name]" class="">
+				  		</a>
+				  	</td>
+				  	<td>
+				  		<h2 class="product-name"><a href="[Website.GetUrl,Product,[Product.Id]]">[Product.Name]</a></h2>
+				  	</td>
+				  	<td class="text-center">
+				  		<a href="#">edit</a>
+				  	</td>
+				  	<td class="text-right" style="padding:10px;">[Product.Price]</td>
+				  	<td class="text-center" style="padding:10px;">[ShoppingCartItem.Quantity]</td>
+				  	<td class="text-right" style="padding:10px;">[ShoppingCartItem.RowTotal]</td>
+				  	<td class="text-center">
+				  		<a href="javascript:setLocationAjax('[Website.GetUrl,Magento,RemoveFromCart]','[Url.FullUrl]',false,'[ShoppingCartItem.Id]');"><i style="font-size: 24px;" class="glyphicon glyphicon-trash"></i></a>
+				  	</td>
+			  	</tr>
+			  	]
+			  </tbody>
+			  <tfoot>
+
+			  </tfoot>
+			</table>
+		</div>
+		]
+	</div>
+</div>
+[:Footer]
+</body>
+</html>

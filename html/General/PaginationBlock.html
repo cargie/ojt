@@ -1,0 +1,20 @@
+<ul class="pagination">
+	[?Filter.IsFirstPage
+		|Yes=<li class="disabled"><a href="javascript:alert('qweqwe');" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+		<li><a href="#">[]</a></li>
+		|No= <li><a href="javascript:selectaction('[Website.GetUrl,Ajax,Update]','[UserInput.DefaultUrlPart]','Page/[Filter.PrevPage]/[UserInput.PageNrOn]/[UserInput.PageSort]/[UserInput.PageAscending]/[UserInput.FilterUrl]');" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+	]
+	[Filter.PagesSmart=
+		[?Filter.LoopPageIsCurrent
+			|Yes=
+			<li class="active"><a href="#">[Filter.LoopPageNr]</a></li>
+			|No=<li><a href="">[Filter.LoopPageNr]</a></li>
+		]
+	]
+	[?Filter.IsLastPage|Yes=<li class="disabled"><a href="javascript:alert('wew');" aria-label="next"><span aria-hidden="true">»</span></a></li>
+	|No=
+		<li><a href="javascript:alert('wewewe');" aria-label="next"><span aria-hidden="true">»</span></a></li>
+	]
+</ul>
+
+

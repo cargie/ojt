@@ -1,0 +1,52 @@
+<li style="position:relative;bottom:5px;">
+  <div class="form-search">
+    <input type="text" class="input-text" id="search-text">
+    <button type="submit" class="input-button">
+      <strong><i class="glyphicon glyphicon-search"></i></strong>
+    </button>
+  </div>
+</li>
+
+<script>
+	jQuery(document).ready(function(){
+		
+		$('#search-text').on('input', function() {
+		var str = jQuery('#search-text').val();
+		var url="[Website.GetUrl,Search,Ajax/]"+str;
+		var surl = "[Website.GetUrl,Search,text/]"+str;
+		if(!str.trim()){
+			jQuery("#search_autocomplete").css('display','none');
+		}else{
+
+				jQuery.ajax(url,{	
+				  type: "GET",  
+				  dataType: "html",
+				  cache: true, 
+				  success: function(data, textStatus, jqXHR){
+						jQuery("#search_autocomplete").html(data);
+						jQuery("#search_autocomplete").css('display','block');
+						jQuery('#seeAllResult').attr("href",surl);
+					}
+				});
+			}
+		
+			console.log(jQuery("#search-text").val());
+		});
+		jQuery('.input-button').click(function(){
+			var str = jQuery('#search-text').val();
+			var url="[Website.GetUrl,Search,text/]"+str;
+			if(!str.trim()){
+
+			}else{
+				window.location = url;
+			}
+		});
+		jQuery('#search-text').keypress(function(e){
+			var str = jQuery('#search-text').val();
+			var url="[Website.GetUrl,Search,text/]"+str;
+			if(e.which == 13 && str.trim() != ""){
+				window.location = url;
+			}
+		});
+	});
+</script>

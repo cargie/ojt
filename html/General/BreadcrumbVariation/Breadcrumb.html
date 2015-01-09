@@ -1,0 +1,9 @@
+<div class="container">
+	<ol class="my breadcrumb">
+	  <li><a href="[Website.GetUrl,Home]">Home</a></li>
+	  [Website.Breadcrumbs=
+			[?BreadCrumb.IsLast|No=<li><a href="[BreadCrumb.Url]">[BreadCrumb.Name]</a></li>
+			|Yes=<li class="active">[BreadCrumb.Name]</li>]
+		]
+	</ol>
+</div>

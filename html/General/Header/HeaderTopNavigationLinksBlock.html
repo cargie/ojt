@@ -1,0 +1,71 @@
+/*
+<div class="navibar">
+	<div class="container">
+		<ul class="list-inline navli">
+			[Website.TopCategories=
+			<li class="dropdown">
+				<a href="[Website.GetUrl,test/test6,Category,[Category.Id]]" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-expanded="false">[Category.Name]</a>
+					<ul class="dropdown-menu">
+						[Category.ChildCategories=
+							<li class="">
+								<a href="/[Category.UrlKey]" class="">
+									[Category.Name]
+								</a>
+							</li>
+						]
+					</ul>
+			</li>
+			]
+		</ul>
+	</div>
+</div>
+*/
+<div class="navibar">
+	<div class="navbar navbar-default ">
+		
+	  <div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </button>
+	  </div>
+	  
+	  <div class="navbar-collapse collapse navbar-responsive-collapse">
+	    <div class="container">
+	    	<ul class="nav navbar-nav">
+		      [Website.TopCategories=
+					<li class="dropdown">
+						<a href="[Website.GetUrl,Category,[Category.Id]]" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-expanded="false">
+						[Category.Name]</a>
+							[?Category.HasChildren|yes=
+							<ul class="dropdown-menu">
+								[Category.ChildCategories=
+								[?Category.HasChildren|yes=
+									<li class="dropdown-submenu">
+								|no=<li>]
+										<a href="[Website.GetUrl,Category,[Category.Id]]" class="">
+											[Category.Name]
+										</a>
+										
+										<ul class="dropdown-menu">
+											[Category.ChildCategories=
+											<li>
+												<a href="[Website.GetUrl,Category,[Category.Id]]" class="">
+													[Category.Name]
+												</a>
+											</li>
+											]
+										</ul>
+										
+									</li>
+								]
+							</ul>
+							]
+					</li>
+					]
+		    </ul>
+	    </div>
+	  </div>
+	</div>
+</div>

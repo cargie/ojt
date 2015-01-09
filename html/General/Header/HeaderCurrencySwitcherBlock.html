@@ -1,0 +1,17 @@
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    [CurrentCurrencyUsed.Unit]
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu currency">
+    [Website.CurrenciesUsed=<li><a href="#" id="[CurrencyUsed.Id]">[CurrencyUsed.DisplayName]</a></li>]
+  </ul>
+
+</li>
+<script type="text/javascript">
+		$(document).ready(function() {
+    $(".currency a").click(function() {
+        window.location ='[Website.GetUrl,Currency,'+this.id+']';
+    });
+});
+</script>

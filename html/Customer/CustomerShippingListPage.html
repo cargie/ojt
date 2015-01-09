@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	[:MetaData]
+	[:Head]
+	<title>[Website.Name] | [_]</title>
+</head>
+<body>
+	[:Header]
+	[:HeaderTopNavigationLinksBlock]
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				[:SideAccountBlock]
+			</div>
+			<div class="col-sm-9">
+				<div class="page-title" style="margin-top:30px;">
+					<h1>
+						[_SHIPPING LIST]
+					</h1>
+					<hr>
+				</div>
+				<div class="shipping-list">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>[_Shipping No.]</th>
+								<th>[_Date]</th>
+								<th>[_Order Number]</th>
+								<th>[_Order Date]</th>
+								<th>[_Status]</th>
+								<th>[_Type]</th>
+								<th>&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							[Customer.Shippings=
+							<tr>
+								<td>[Shipping.ShippingNumber]</td>
+								<td><span class="nobr">[Shipping.ShippingDate]</span></td>
+
+								<td>
+								[Shipping.OrderNumber]
+								</td>
+								<td>
+								[Shipping.OrderDate]
+								</td>
+								<td><em>[Shipping.Status]</em></td>
+								<td>[Shipping.Type]</td>
+								<td><a href="[Website.GetUrl,Customer,ShippingView/[Shipping.Id]/[Url.View]]">[_View]</a></td>
+							</tr>
+							]
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	[:Footer]
+</body>
+</html>

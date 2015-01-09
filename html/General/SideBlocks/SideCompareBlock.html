@@ -1,0 +1,32 @@
+
+[?Comparer.HasItems|yes=
+<div class="compared-product-block">
+					
+					
+	<p class="compared-title"><strong>[_COMPARE PRODUCTS]</strong></p>
+[Comparer.Items,4=
+	<p>
+		<div class="row" data-id="[ComparerItem.Id]">
+			<div class="col-xs-6 col-sm-4">
+				<a href="[Website.GetUrl,Product,[Product.Id]]">
+					<img src="/[Product.ThumbnailImage=[ProductImage.ImageUrl,100,100]]" alt="[Product.Name]" class="img-responsive">
+				</a>
+			</div>
+			<div class="col-xs-4 col-sm-6">
+				<p class="product-name">
+					<a href="[Website.GetUrl,Product,[Product.Id]]">[Product.Name]</a>
+				</p>
+			</div>
+			<div class="col-xs-2 col-sm-2">
+				<a href="javascript:setLocationAjax('[Website.GetUrl,Magento,RemoveFromCompare]','[Url.FullUrl]',false,'[ComparerItem.Id]');" class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="right" title="Remove This Item"></a>
+			</div>
+		</div>
+	</p>
+		
+	]
+	<div class="button-links">
+		<a href="[Website.GetUrl,Compare]" class="btn btn-default btn-compare">COMPARE</a>
+		<a href="javascript:setLocationAjax('[Website.GetUrl,Magento,ClearCompare]','[Url.FullUrl]',false,'');" class="btn btn-link">Clear All</a>
+	</div>
+</div>
+]

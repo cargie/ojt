@@ -1,0 +1,22 @@
+{
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				"*.sublime-project"
+			],
+			"follow_symlinks": true,
+			"name": "Sample 6",
+			"path": "."
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/data/ShopData/General/designs/DefaultTemplate"
+		}
+	],
+	"settings":
+	{
+		"tab_size": 2
+	}
+}

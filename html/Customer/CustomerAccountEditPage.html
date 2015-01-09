@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	[:MetaData]
+	[:Head]
+	<title>[Website.Name] | [_]</title>
+</head>
+<body>
+	[:Header]
+	[:HeaderTopNavigationLinksBlock]
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				[:SideAccountBlock]
+			</div>
+			<div class="col-sm-9">
+				<div class="page-title" style="margin-top:30px;">
+					<h1>
+						[_Edit Account Information]
+					</h1>
+					<hr>
+				</div>
+				<div class="edit-information">
+						<form action="" class="">
+							<div class="account-info-box">
+								<div class="info-title">
+								<h5><strong>[_ACCOUNT INFORMATION]</strong></h5>
+								<hr>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+								      <label for="firstname">[_First Name] <span class="text-danger">*</span></label>
+								      <input type="text" id="firstname" class="form-control" name="firstname" value="[Customer.FirstName]">
+								    </div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+								      <label for="lastname">Last Name <span class="text-danger">*</span></label>
+								      <input type="text" id="lastname" class="form-control" value="[Customer.LastName]">
+								    </div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+								      <label for="email">Email <span class="text-danger">*</span></label>
+								      <input type="email" id="email" class="form-control" value="[Customer.Email]">
+								    </div>
+									</div>
+								</div>
+							</div>
+							<div class="checkbox">
+						    <label >
+						      <input type="checkbox" id="changepassword"> [_Change Password]
+						    </label>
+						  </div>
+						</div>
+						  <div class="changepassword-field">
+						  	<div class="info-title">
+									<h5><strong>[_CHANGE PASSWORD]</strong></h5>
+									<hr>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+								      <label for="oldpassword">[_Current Password] <span class="text-danger">*</span></label>
+								      <input type="password" id="current_password" class="form-control">
+								    </div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+								      <label for="password">[_New Password] <span class="text-danger">*</span></label>
+								      <input type="password" id="password" class="form-control">
+								    </div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+								      <label for="confirm_password">[_Confirm Password] <span class="text-danger">*</span></label>
+								      <input type="password" id="confirm_password" class="form-control">
+								    </div>
+									</div>
+								</div>
+						  </div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	[:Footer]
+</body>
+		<script type="text/javascript">
+				if (('[Url.Controller]'=='ChangePassword') && ('[Url.MVC4]'=='1')){
+					jQuery('#changepassword').prop('checked', true);
+
+				}else{
+					jQuery('.changepassword-field').css('display','none');
+				}
+		</script>
+</html>
